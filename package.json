@@ -1,0 +1,24 @@
+{
+  "name": "nimoo",
+  "version": "0.0.3",
+  "private": false,
+  "description": "react web dev tools",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "fanli",
+    "react"
+  ],
+  "author": "Glen Zhang<lei.zhang@fanli.com>",
+  "bin": {
+    "nimoo": "./bin/nimoo"
+  },
+  "license": "ISC",
+  "dependencies": {
+    "colors": "^1.1.2",
+    "commander": "^2.9.0",
+    "yargs": "^5.0.0"
+  }
+}

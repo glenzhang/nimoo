@@ -1,0 +1,48 @@
+#!/usr/bin/env node
+
+var argv = require('yargs').argv;
+var program = require('commander');
+var exec = require('child_process').exec;
+var colors = require('colors');
+var util = require('../lib/util');
+var log = util.log;
+var format = util.format;
+var CONF = require('../lib/conf');
+
+var channel = argv.c;
+var isProduction = argv.p;
+var isWatching = argv.w;
+
+var cmd;
+
+program.version(require('../package.json').version.green)
+    .option('-c, --channel', '必填，需要编译的频道，编译完自动启动dev server'.green)
+    .option('-p, --production', '选填，有此参数时，生成生产版本，不启动dev server'.green)
+    .parse(process.argv);
+
+if (!program.args.length) program.help();
+
+if (!channel) {
+    log('channel [-c] is required!');
+    return;
+}
+
+if (CONF.channels.indexOf(channel) == -1) {
+    log(format('channel [-c] should be in "{0}", but input is '.gray + channel.toString().red, CONF.channels.toString()));
+    return;
+}
+
+cmd = format('rm -rf dist/{0} && webpack -w --config webpack.{0}.config.js --progress --profile --colors', channel);
+
+if (isProduction) {
+    cmd = format('rm -rf dist/{0} && webpack --config webpack.{0}.production.config.js --progress --profile --colors', channel);
+}
+
+log(format('BEGIN BUILD {0} : {1}'.green, channel, cmd));
+exec(cmd, (err, stdout, stderr) => {
+    if (err) {
+        log(stderr.red);
+        return;
+    }
+    log(format('END BUILD {0} success'.green, channel));
+}).stdout.pipe(process.stdout);
