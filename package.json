@@ -1,16 +1,15 @@
 {
   "name": "nimoo",
-  "version": "0.0.3",
-  "private": false,
+  "version": "0.0.4",
   "description": "react web dev tools",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
   "keywords": [
     "fanli",
     "react"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/glenzhang/nimoo.git"
+  },
   "author": "Glen Zhang<lei.zhang@fanli.com>",
   "bin": {
     "nimoo": "./bin/nimoo"
@@ -20,5 +19,9 @@
     "colors": "^1.1.2",
     "commander": "^2.9.0",
     "yargs": "^5.0.0"
-  }
+  },
+  "bugs": {
+    "url": "https://github.com/glenzhang/nimoo/issues"
+  },
+  "homepage": "https://github.com/glenzhang/nimoo"
 }
