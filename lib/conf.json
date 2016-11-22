@@ -1,15 +1,16 @@
 {
     "channels": [
-        "super",
-        "tuan",
+        "center",
         "demo",
+        "hotel",
+        "mall",
         "mobile",
         "movie",
-        "hotel",
-        "9",
-        "center",
-        "taobao",
         "shop",
-        "zhide"
+        "super",
+        "taobao",
+        "tuan",
+        "zhide",
+        "9"
     ]
 }
